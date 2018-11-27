@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import LevelMeter from './levelMeterComponent';
 import './App.css';
 
 class App extends Component {
+  handleChange = e => {
+    let value = Number.parseInt(e.target.value);
+    this.props.valueChanged(value);
+  };
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <input value={this.props.value} type="number" onChange={this.handleChange} />
+        <LevelMeter max={10} value={this.props.value} />
       </div>
     );
   }

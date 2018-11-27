@@ -13,12 +13,13 @@ class LevelMeter extends Component {
       width: this.props.width,
       height: this.props.height / this.props.max,
     }));
-    console.table(rects);
+    //console.log(rects);
+    //console.table(rects);
     return (
       <svg height={this.props.height} width={this.props.width}>
         <rect height={this.props.height} width={this.props.width} style={style} />
         {rects.map(r => (
-          <rect height={r.height} width={r.width} style={innerStyle} x={r.x} y={r.y} />
+          <rect key={r.y} height={r.height} width={r.width} style={innerStyle} x={r.x} y={r.y} />
         ))}
       </svg>
     );
